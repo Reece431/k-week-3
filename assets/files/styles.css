@@ -27,6 +27,8 @@ a {
   border-radius: 4px;
   font-size: .9em;
   text-transform: uppercase;
+  -webkit-transition: background 200ms ease-in-out;
+  transition: background 200ms ease-in-out;
 }
 
 .title {
@@ -63,71 +65,88 @@ nav .login {
   margin: 0 2em;
 }
 
-.top {
-  padding-bottom: 1em;
-  background: #301153;
-}
-
-@media only screen and (max-width: 576px) {
-  .top {
-    padding-bottom: 0;
-  }
-}
-
 .top .offerWrapper {
+  position: relative;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: 2fr 1fr;
+      grid-template-rows: 2fr 1fr;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow: hidden;
+  height: 40em;
+}
+
+@media only screen and (max-width: 1024px) {
+  .top .offerWrapper {
+    height: 20em;
+  }
 }
 
 @media only screen and (max-width: 576px) {
   .top .offerWrapper {
     height: 40vh;
-    -ms-grid-columns: 1fr !important;
-        grid-template-columns: 1fr !important;
-  }
-}
-
-@media only screen and (max-width: 950px) {
-  .top .offerWrapper {
-    -ms-grid-columns: (0.8fr)[2];
-        grid-template-columns: repeat(2, 0.8fr);
   }
 }
 
 .top .offerWrapper .offerVideo {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0em;
+  width: 100em;
+  height: 40em;
+  z-index: 5;
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+}
+
+@media only screen and (max-width: 1024px) {
+  .top .offerWrapper .offerVideo {
+    height: 20em;
+    left: -20em;
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+
+@media only screen and (max-width: 690px) {
+  .top .offerWrapper .offerVideo {
+    left: -15em;
+  }
 }
 
 @media only screen and (max-width: 576px) {
   .top .offerWrapper .offerVideo {
-    display: none;
+    top: -2em;
+    left: -18em;
   }
 }
 
-.top .offerWrapper .offerVideo iframe {
-  -webkit-transform: scale(3);
-          transform: scale(3);
+.top .offerWrapper .offerImg {
+  z-index: 6;
+  margin-right: 4em;
+  -ms-grid-column-align: end;
+      justify-self: end;
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 1024px) {
+  .top .offerWrapper .offerImg {
+    height: 15em;
+  }
+}
+
+@media only screen and (max-width: 690px) {
   .top .offerWrapper .offerImg {
     height: 10em;
     margin: 0 auto;
+    -ms-grid-column-align: center;
+        justify-self: center;
   }
+}
+
+.top .infoWrapper {
+  z-index: 6;
 }
 
 .top .terms {
@@ -157,8 +176,7 @@ nav .login {
 .stepsWrapper .steps {
   width: 80vw;
   padding: 1em 0;
-  margin: 1em auto;
-  margin-top: 0;
+  margin: .5em auto;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
@@ -188,7 +206,7 @@ nav .login {
   content: '';
   position: absolute;
   top: 45%;
-  left: 100%;
+  left: 23vw;
   height: 1em;
   width: .5em;
   background: url("/assets/dots1.png") no-repeat;
@@ -201,7 +219,7 @@ nav .login {
   content: '';
   position: absolute;
   top: 45%;
-  left: 15%;
+  left: 3vw;
   height: 1em;
   width: .5em;
   background: url("/assets/dots1.png") no-repeat;
@@ -290,6 +308,13 @@ nav .login {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: start;
+}
+
+@media only screen and (max-width: 576px) {
+  .bottom .stepsWrapper .steps {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
 }
 
 .bottom .stepsWrapper .steps .step {
@@ -386,7 +411,7 @@ nav .login {
 
 @media only screen and (max-width: 930px) {
   .bottom .points {
-    width: 80vw;
+    width: 60vw;
     -ms-grid-columns: (1fr)[2] !important;
         grid-template-columns: repeat(2, 1fr) !important;
     -ms-grid-rows: (1fr)[2];
@@ -396,6 +421,9 @@ nav .login {
     border-bottom: solid 0.1em rgba(255, 255, 255, 0.8);
     padding: 1em 2em !important;
     margin: 0 !important;
+    -webkit-box-pack: justify !important;
+        -ms-flex-pack: justify !important;
+            justify-content: space-between !important;
   }
   .bottom .points li:nth-child(2) {
     border-right: none;
@@ -427,6 +455,7 @@ nav .login {
   margin: 1em 0;
   padding: .5em 0;
   border-right: solid 0.1em rgba(255, 255, 255, 0.8);
+  font-size: .8em;
 }
 
 .bottom .points li:last-child {
@@ -537,7 +566,6 @@ nav .login {
 }
 
 .bottom .carouselWrapper .slick-current {
-  background: red !important;
   -webkit-box-shadow: 0 0 20px #000;
           box-shadow: 0 0 20px #000;
   -webkit-transition: all 200ms ease-in-out;
@@ -545,10 +573,17 @@ nav .login {
   z-index: 2 !important;
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
+  cursor: default !important;
+}
+
+.bottom .carouselWrapper .slick-current button:hover {
+  background: #820724;
+  -webkit-transition: background 200ms ease-in-out;
+  transition: background 200ms ease-in-out;
 }
 
 .bottom .carouselWrapper .carousel {
-  width: 90vw;
+  width: 70vw;
   height: 20em;
   margin: 0 auto;
   display: -webkit-box;
@@ -559,17 +594,24 @@ nav .login {
           align-items: center;
 }
 
+@media only screen and (max-width: 754px) {
+  .bottom .carouselWrapper .carousel {
+    width: 95vw;
+  }
+}
+
 .bottom .carouselWrapper .carousel .item {
-  height: 10em;
-  width: 26em;
-  margin: 3em 0;
+  height: 11.25em;
+  width: 20em;
+  margin: 5em 0;
   border-radius: 1em;
   text-align: center;
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
-  background: green;
   z-index: 1;
   position: relative;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 930px) {
@@ -582,6 +624,30 @@ nav .login {
   .bottom .carouselWrapper .carousel .item {
     height: 8em;
     width: 12em;
+  }
+}
+
+.bottom .carouselWrapper .carousel .item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+}
+
+.bottom .carouselWrapper .carousel .item button {
+  position: absolute;
+  bottom: .5em;
+  left: 7.5em;
+  z-index: 6;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 576px) {
+  .bottom .carouselWrapper .carousel .item button {
+    left: 3em;
+    bottom: .1em;
+    padding: 0.6em !important;
   }
 }
 

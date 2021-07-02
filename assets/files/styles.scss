@@ -54,7 +54,8 @@ a{
     text-decoration: none;
 }
 .login {
-    @include btn($btn)
+    @include btn($btn);
+    transition: background 200ms ease-in-out;
 }
 .title{
     font-size: 2.5em;
@@ -80,40 +81,57 @@ nav{
 }
 
 .top{
-    @include mqMax(576px){
-        padding-bottom: 0;
-    }
-    padding-bottom: 1em;
-    background: #301153;
+    //background: #301153;
     .offerWrapper{
+        @include mqMax(1024px){
+            height:20em;
+        }
         @include mqMax(576px){
             height: 40vh;
-            grid-template-columns: 1fr!important;
         }
+        position: relative;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 2fr 1fr;
         align-items: center;
-        @include mqMax(950px){
-            grid-template-columns: repeat(2, .8fr);
-        }
+        overflow: hidden;
+        height: 40em;
         .offerVideo{
+            @include mqMax(1024px){
+                height: 20em;
+                left: -20em;
+                transform: scale(1.2);
+            }
+            @include mqMax(690px){
+                left: -15em;
+            }
             @include mqMax(576px){
-                display: none;
-            }
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow:hidden;
-            iframe{
-                transform: scale(3);
-            }
+                top: -2em;
+                left: -18em;
+            }    
+            position: absolute;
+            bottom: 0;
+            left: 0em;
+            width: 100em;
+            height: 40em;
+            z-index: 5;
+            transform: scale(1.3);
         }
         .offerImg{
-            @include mqMax(576px){
+            z-index: 6;
+            margin-right: 4em;
+            justify-self: end;
+            @include mqMax(1024px){
+                height: 15em;
+            }
+            @include mqMax(690px){
                 height: 10em;
                 margin: 0 auto;
+                justify-self: center;
             }
         }
+    }
+    .infoWrapper{
+        z-index: 6;
     }
     .terms{
         color: $col1;
@@ -136,8 +154,7 @@ nav{
     .steps{
         width: 80vw;
         padding: 1em 0;
-        margin: 1em auto;
-        margin-top: 0;
+        margin: .5em auto;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         justify-items: center;
@@ -149,10 +166,10 @@ nav{
             flex-direction: row-reverse;
             align-items: center;
             &::before{
-                @include dots(0 0 0 .5em,100%,45%,'/assets/dots1.png');
+                @include dots(0 0 0 .5em,23vw,45%,'/assets/dots1.png');
             }
             &::after{
-                @include dots(0 .2em 0 0,15%,45%,'/assets/dots1.png')
+                @include dots(0 .2em 0 0,3vw,45%,'/assets/dots1.png')
             }
             &:nth-child(3){
                 &::before{
@@ -206,6 +223,9 @@ nav{
         width: 15em;
         margin: 0 auto;
         .steps{
+            @include mqMax(576px){
+                grid-template-columns: 1fr;
+            }
             width: auto;
             grid-template-columns: auto;
             grid-row-gap: 1em;
@@ -251,13 +271,14 @@ nav{
 
     .points{
         @include mqMax(930px){
-            width: 80vw;
+            width: 60vw;
             grid-template-columns: repeat(2, 1fr)!important;
             grid-template-rows: repeat(2, 1fr);
             li{
                 border-bottom: solid .1em $col1;
                 padding: 1em 2em!important;
                 margin: 0!important;
+                justify-content: space-between!important;
                 &:nth-child(2){
                     border-right: none;
                 }
@@ -286,6 +307,7 @@ nav{
             margin: 1em 0;
             padding: .5em 0;
             border-right: solid .1em $col1;
+            font-size: .8em;
             &:last-child{
                 border: none;
             }
@@ -361,14 +383,23 @@ nav{
     .carouselWrapper{
         text-align: center;
         .slick-current{
-            background: red!important;
             box-shadow: 0 0 20px #000;
             transition: all 200ms ease-in-out;
             z-index: 2!important;
             transform: scale(1.5);
+            cursor: default!important;
+            button{
+                &:hover{
+                    background: #820724;
+                    transition: background 200ms ease-in-out;
+                }
+            }
         }
         .carousel{
-            width: 90vw;
+            @include mqMax(754px){
+                width: 95vw;
+            }
+            width: 70vw;
             height: 20em;
             margin: 0 auto;
             display: flex;
@@ -381,15 +412,35 @@ nav{
                     height: 8em;
                     width: 12em;
                 }
-                height: 10em;
-                width: 26em;
-                margin: 3em 0;
+                height: 11.25em;
+                width: 20em;
+                margin: 5em 0;
                 border-radius: 1em;
                 text-align: center;
                 transition: all 200ms ease-in-out; 
-                background: green;
                 z-index: 1;
                 position: relative;
+                overflow: hidden;
+                cursor: pointer;
+                img{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    z-index: 5;
+                }
+                button{
+                    @include mqMax(576px){
+                        left: 3em;
+                        bottom: .1em;
+                        padding: .6em!important;
+                    }
+                    position: absolute;
+                    bottom: .5em;
+                    left: 7.5em;
+                    z-index: 6;
+                    cursor: pointer;
+                }
             }
         }
     }
