@@ -6,6 +6,10 @@
   font-family: 'Roboto', sans-serif;
 }
 
+body {
+  background: #110540;
+}
+
 img {
   height: 100%;
 }
@@ -43,6 +47,10 @@ a {
 }
 
 nav {
+  background-color: #211551;
+}
+
+nav .navWrapper {
   max-width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -53,16 +61,54 @@ nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #211551;
+  background-color: transparent;
 }
 
-nav #logo {
+@media only screen and (min-width: 1860px) {
+  nav .navWrapper {
+    max-width: 70em;
+    margin: 0 auto;
+  }
+}
+
+nav .navWrapper #logo {
   height: 4em;
   margin: 0 2em;
 }
 
-nav .login {
+nav .navWrapper .login {
   margin: 0 2em;
+}
+
+.top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #110540;
+}
+
+.top .fadeColumn {
+  display: none;
+  height: 40em;
+  width: 10em;
+  -webkit-box-shadow: 10px 0 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 10px 0 10px rgba(0, 0, 0, 0.5);
+  background: #110540;
+  z-index: 6;
+}
+
+@media only screen and (min-width: 1860px) {
+  .top .fadeColumn {
+    display: block;
+  }
+}
+
+.top .rc {
+  -webkit-box-shadow: -10px 0 10px rgba(0, 0, 0, 0.5);
+          box-shadow: -10px 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .top .offerWrapper {
@@ -87,6 +133,12 @@ nav .login {
 @media only screen and (max-width: 576px) {
   .top .offerWrapper {
     height: 40vh;
+  }
+}
+
+@media only screen and (min-width: 1860px) {
+  .top .offerWrapper {
+    width: 100em;
   }
 }
 
@@ -118,8 +170,9 @@ nav .login {
 
 @media only screen and (max-width: 576px) {
   .top .offerWrapper .offerVideo {
-    top: -2em;
-    left: -18em;
+    top: 0em;
+    left: 50%;
+    margin-left: -33em;
   }
 }
 
@@ -188,6 +241,12 @@ nav .login {
   color: rgba(255, 255, 255, 0.8);
 }
 
+@media only screen and (min-width: 1860px) {
+  .stepsWrapper .steps {
+    width: inherit;
+  }
+}
+
 .stepsWrapper .steps .step {
   position: relative;
   display: -webkit-box;
@@ -213,6 +272,7 @@ nav .login {
   margin: 0 0 0 0.5em;
   font-size: 3em;
   background-size: contain;
+  display: none;
 }
 
 .stepsWrapper .steps .step::after {
@@ -226,6 +286,7 @@ nav .login {
   margin: 0 0.2em 0 0;
   font-size: 3em;
   background-size: contain;
+  display: none;
 }
 
 .stepsWrapper .steps .step:nth-child(3)::before {
@@ -235,10 +296,11 @@ nav .login {
   left: 15%;
   height: 1em;
   width: .5em;
-  background: url("./assets/dots1.png") no-repeat;
+  background: url("../../assets/dots1.png") no-repeat;
   margin: 0 0.2em 0 0;
   font-size: 3em;
   background-size: contain;
+  display: none;
 }
 
 .stepsWrapper .steps .step .index {
@@ -337,10 +399,11 @@ nav .login {
   left: 33%;
   height: 1em;
   width: .5em;
-  background: url("./assets/dots.png") no-repeat;
+  background: url("../../assets/dots.png") no-repeat;
   margin: 0 0 0 0.5em;
   font-size: 3em;
   background-size: contain;
+  display: none;
 }
 
 .bottom .stepsWrapper .steps .step::after {
@@ -350,10 +413,11 @@ nav .login {
   left: 33%;
   height: 1em;
   width: .5em;
-  background: url("./assets/dots1.png") no-repeat;
+  background: url("../../assets/dots1.png") no-repeat;
   margin: 0 0.2em 0 0;
   font-size: 3em;
   background-size: contain;
+  display: none;
 }
 
 .bottom .stepsWrapper .steps .step:nth-child(2) {
@@ -371,6 +435,7 @@ nav .login {
   margin: 0 0.2em 0 0;
   font-size: 3em;
   background-size: contain;
+  display: none;
   font-size: 1em;
 }
 
@@ -385,6 +450,7 @@ nav .login {
   margin: 0 0.2em 0 0;
   font-size: 3em;
   background-size: contain;
+  display: none;
   font-size: 1em;
 }
 
@@ -594,6 +660,12 @@ nav .login {
           align-items: center;
 }
 
+@media only screen and (min-width: 1500px) {
+  .bottom .carouselWrapper .carousel {
+    width: 60em;
+  }
+}
+
 @media only screen and (max-width: 754px) {
   .bottom .carouselWrapper .carousel {
     width: 95vw;
@@ -654,6 +726,12 @@ nav .login {
 .bottom footer {
   width: 90vw;
   margin: 0 auto;
+}
+
+@media only screen and (min-width: 1860px) {
+  .bottom footer {
+    width: 100em;
+  }
 }
 
 @media only screen and (max-width: 576px) {

@@ -29,6 +29,7 @@
     margin: $m;
     font-size: 3em;
     background-size: contain;
+    display:none;
 };
 
 $col1: rgba(255,255,255,0.8);
@@ -36,6 +37,7 @@ $btn: #ad0d33;
 $overlay: rgba(0,0,0,0.5);
 $detail: #2b1d6a;
 $detail2: #C5107F;
+$bgCol: #110540;
 
 *{
     margin: 0;
@@ -43,7 +45,9 @@ $detail2: #C5107F;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
-
+body{
+    background: $bgCol;
+}
 img {
     height: 100%;
 }
@@ -66,28 +70,54 @@ a{
 }
 
 nav{
-    max-width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     background-color: #211551;
-    #logo {
-        height: 4em;
-        margin: 0 2em;
-    }
-    .login{
-        margin: 0 2em;
+    .navWrapper{
+        @include mqMin(1860px){
+            max-width: 70em;
+            margin: 0 auto;
+        }
+        max-width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: transparent;
+        #logo {
+            height: 4em;
+            margin: 0 2em;
+        }
+        .login{
+            margin: 0 2em;
+        }
     }
 }
 
 .top{
-    //background: #301153;
+    display: flex;
+    justify-content: center;
+    background: $bgCol;
+    .fadeColumn{
+        @include mqMin(1860px){
+            display:block;
+        }
+        display:none;
+        height: 40em;
+        width: 10em;
+        box-shadow: 10px 0 10px rgba(0,0,0,0.5);
+        background: $bgCol;
+        z-index: 6;
+    }
+    .rc{
+        box-shadow: -10px 0 10px rgba(0,0,0,0.5);
+    }
     .offerWrapper{
         @include mqMax(1024px){
             height:20em;
         }
         @include mqMax(576px){
             height: 40vh;
+        }
+        @include mqMin(1860px){
+            width: 100em;
         }
         position: relative;
         display: grid;
@@ -105,8 +135,9 @@ nav{
                 left: -15em;
             }
             @include mqMax(576px){
-                top: -2em;
-                left: -18em;
+                top: 0em;
+                left: 50%;
+                margin-left: -33em;
             }    
             position: absolute;
             bottom: 0;
@@ -152,6 +183,9 @@ nav{
 .stepsWrapper{
     background: $overlay;
     .steps{
+        @include mqMin(1860px){
+            width:inherit;
+        }
         width: 80vw;
         padding: 1em 0;
         margin: .5em auto;
@@ -173,7 +207,7 @@ nav{
             }
             &:nth-child(3){
                 &::before{
-                    @include dots(0 .2em 0 0,15%,45%,'./assets/dots1.png')
+                    @include dots(0 .2em 0 0,15%,45%,'../../assets/dots1.png')
                 }
             }
             .index{
@@ -211,7 +245,7 @@ nav{
 .bottom{
     color: $col1;
     padding: 2em 0;
-    background: #110540;
+    background: $bgCol;
 
     .stepsWrapper{
         @include mqMin(1025px){
@@ -237,10 +271,10 @@ nav{
                 flex-direction: row-reverse;
                 align-items: center;
                 &::before{
-                    @include dots(0 0 0 .5em,33%,100%,'./assets/dots.png');
+                    @include dots(0 0 0 .5em,33%,100%,'../../assets/dots.png');
                 }
                 &::after{
-                    @include dots(0 .2em 0 0,33%,-15%,'./assets/dots1.png')
+                    @include dots(0 .2em 0 0,33%,-15%,'../../assets/dots1.png')
                 }
                 &:nth-child(2){
                     margin: 1em 0;
@@ -396,6 +430,9 @@ nav{
             }
         }
         .carousel{
+            @include mqMin(1500px){
+                width: 60em;
+            }
             @include mqMax(754px){
                 width: 95vw;
             }
@@ -445,6 +482,9 @@ nav{
         }
     }
     footer{
+        @include mqMin(1860px){
+            width: 100em;
+        }
         @include mqMax(576px){
             text-align: center;
         }
